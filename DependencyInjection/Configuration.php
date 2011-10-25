@@ -202,10 +202,26 @@ class Configuration
                     ->scalarNode('store')->end()
                     ->scalarNode('index')->end()
                     ->scalarNode('analyzer')->end()
+                    ->arrayNode('fields')
+                        ->children()
+                            ->arrayNode('title')
+                                ->children()
+                                    ->scalarNode('store')->end()
+                                ->end()
+                            ->end()
+                            ->arrayNode('file')
+                                ->children()
+                                    ->scalarNode('store')->end()
+                                    ->scalarNode('term_vector')->end()
+                                ->end()
+                            ->end()
+                        ->end()    
+                    ->end()
                 ->end()
             ->end()
         ;
 
         return $node;
     }
+    
 }
